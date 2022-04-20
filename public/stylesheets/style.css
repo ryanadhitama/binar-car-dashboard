@@ -8,7 +8,7 @@ body{
 }
 
 .auth-wrapper{
-    background: url(/images/auth_bg.png) no-repeat;
+    background: url(/img/auth_bg.png) no-repeat;
     background-size: cover;
     background-position: left;
 }
@@ -233,7 +233,7 @@ body{
 }
 
 .account-avatar .dropdown .dropdown-toggle::before{
-    content: url(/images/fi_chevron-down.svg);
+    content: url(/img/fi_chevron-down.svg);
     width: 24px;
     height: 24px;
     display: block;
@@ -391,7 +391,7 @@ body{
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
-    content: url(/images/chevron-right.svg);
+    content: url(/img/chevron-right.svg);
     top: 1px;
     position: relative;
     height: 16px;
@@ -429,7 +429,7 @@ body{
 }
 
 .custom-file-label::after{
-    content: url(/images/fi_upload.svg) !important;
+    content: url(/img/fi_upload.svg) !important;
     background: none;
     border: none;
     top: 50%;
@@ -566,17 +566,17 @@ table.dataTable.no-footer{
 }
 
 table.dataTable thead .sorting{
-    background-image: url(/images/fi_sort.svg) !important;
+    background-image: url(/img/fi_sort.svg) !important;
     background-position-x: calc(100% - 16px) !important;
 }
 
 table.dataTable thead .sorting.sorting_asc {
-    background-image: url(/images/fi_sort_asc.svg) !important;
+    background-image: url(/img/fi_sort_asc.svg) !important;
     background-position-x: calc(100% - 16px) !important;
 }
 
 table.dataTable thead .sorting.sorting_desc {
-    background-image: url(/images/fi_sort_desc.svg) !important;
+    background-image: url(/img/fi_sort_desc.svg) !important;
     background-position-x: calc(100% - 16px) !important;
 }
 
@@ -660,7 +660,7 @@ body .dataTables_wrapper .dataTables_paginate .paginate_button:hover svg{
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background-image: url(/images/fi_chevron-down.svg);
+    background-image: url(/img/fi_chevron-down.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 12px) 8px;
     background-size: 20px;

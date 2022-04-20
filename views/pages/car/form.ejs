@@ -1,0 +1,16 @@
+<div class="page-content">
+    <% if (locals.dataUpdate) { %> 
+      <form action='/car/update/store/<%= dataUpdate.id %>' method="POST" enctype="multipart/form-data">
+    <% } else {%>
+      <form action="/car/create/store" method="POST" enctype="multipart/form-data">
+    <% }%>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/car">Car</a></li>
+        <li class="breadcrumb-item"><a href="/car">List Car</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%- title %> </li>
+      </ol>
+    </nav>
+    <h1 class="page-title"><%- title %></h1>
+    </form>
+</div>
