@@ -1,10 +1,10 @@
 const api = require('express').Router();
-const CarController = require('../controllers/api/car.controller')
-const SizeController = require('../controllers/api/size.controller')
+const APICarController = require('../controllers/api/car.controller')
+const APISizeController = require('../controllers/api/size.controller')
 
-api.get('/cars', CarController.all);
-api.get('/cars/:id', CarController.show);
+api.get('/cars', APICarController.all);
+api.get('/cars/:id', APICarController.show);
 
-api.get('/sizes', SizeController.all);
+api.get('/sizes', APISizeController.all);
 
 module.exports = api;
