@@ -15,7 +15,7 @@ class CarController {
   }
   show(req, res) {
     const locals = {
-      title: 'Update Car',
+      title: 'Update Car Information',
       layout: './layouts/dashboard'
     }
     res.render('pages/car/form', locals)

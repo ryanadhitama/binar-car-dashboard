@@ -5,7 +5,14 @@ const errorResponse = (res, error) => {
   });
 };
 
-const successResponse = (res, data) => {
+const successResponse = (res, message) => {
+  return res.status(200).json({
+    success: true,
+    message: message,
+  });
+};
+
+const successFetchResponse = (res, data) => {
   return res.status(200).json({
     success: true,
     data: data,
@@ -22,5 +29,6 @@ const notFoundResponse = (res, data) => {
 module.exports = {
   errorResponse,
   successResponse,
+  successFetchResponse,
   notFoundResponse
 }

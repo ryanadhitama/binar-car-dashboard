@@ -3,8 +3,9 @@ const api = axios.create({
 });
 
 let listCar = document.getElementById("list-car");
+let listSize = document.getElementById("list-size");
 
-function loadData() {
+function loadDataCars() {
   api
     .get("/api/cars")
     .then((result) => {
@@ -19,4 +20,18 @@ function loadData() {
     .catch(() => {});
 }
 
-loadData();
+function loadDataSize() {
+  api
+    .get("/api/sizes")
+    .then((result) => {
+      Size.init(result?.data?.data);
+      Size.list.forEach((size) => {
+        let node = size.render();
+        listSize.insertAdjacentHTML('beforeend', node);
+      });
+    })
+    .catch(() => {});
+}
+
+loadDataCars();
+loadDataSize();

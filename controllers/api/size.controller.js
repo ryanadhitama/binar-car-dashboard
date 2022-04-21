@@ -1,14 +1,14 @@
 const models = require("../../models/index");
 const {
   errorResponse,
-  successResponse
+  successFetchResponse
 } = require("../../libs/response");
 
 class SizeController {
   async all(req, res) {
     try {
       const sizes = await models.sizes.findAll();
-      return successResponse(res, sizes);
+      return successFetchResponse(res, sizes);
     } catch (error) {
       return errorResponse(res, error);
     }
