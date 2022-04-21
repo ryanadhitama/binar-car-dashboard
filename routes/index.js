@@ -6,6 +6,7 @@ routes.get('/', CarController.index);
 routes.get('/car', CarController.index);
 routes.get('/car/create', CarController.create);
 routes.get('/car/:id/edit', CarController.show)
+
 routes.use('/api', api)
 
 module.exports = routes;
