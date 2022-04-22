@@ -6,14 +6,18 @@ let listCar = document.getElementById("list-car");
 let listSize = document.getElementById("list-size");
 
 function filterCar(id, e) {
-  document
-    .querySelectorAll(".btn-filter")
-    .forEach((button) => button.classList.remove("active"));
+  resetFilterCar();
   e.classList.add("active");
   listCar.innerHTML = "";
   api.get("/api/cars?size_id=" + id).then((result) => {
     generateCar(result?.data?.data);
   });
+}
+
+function resetFilterCar() {
+  document
+    .querySelectorAll(".btn-filter")
+    .forEach((button) => button.classList.remove("active"));
 }
 
 function loadDataCars() {
