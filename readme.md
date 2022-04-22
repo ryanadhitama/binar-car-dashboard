@@ -1,6 +1,6 @@
 # Car Management Dashboard
 
-## How to run
+## How to run 🚀
 
 Berikut cara menjalankan project ini
 
@@ -10,7 +10,7 @@ Berikut cara menjalankan project ini
 4. Pastikan sequelize cli sudah terinstall. Untuk instalasi sequelize, jalankan perintah `npm install -g sequelize-cli` pada terminal atau command line.
 5. Jalankan `npm install` untuk menginstall package project ini pada terminal atau command line.
 
-## Endpoints
+## Endpoints 📡
 
 | Route         | Method   | Penggunaan                              |
 | ------------- | -------- | --------------------------------------- |
@@ -26,7 +26,7 @@ Berikut cara menjalankan project ini
 | /api/cars/:id | `DELETE` | Menghapus data car berdasarkan ID       |
 | /api/upload   | `POST`   | Mengupload gambar car                   |
 
-## Directory Structure
+## Directory Structure 📜
 ```
 .
 ├── config
@@ -71,6 +71,6 @@ Berikut cara menjalankan project ini
 ├── package.json
 └── readme.md
 ```
-## ERD
+## ERD 💾
 
 ![Entity Relationship Diagram](public/img/erd.png)
