@@ -23,21 +23,53 @@ class Car {
             this.image
           }' alt="Car" />
           <span class="type mb-2">${this.name} </span>
-          <span class="price mb-3">Rp ${
-            new Intl.NumberFormat('de-DE').format(this.price)
-          }  / hari</span>
+          <span class="price mb-3">Rp ${new Intl.NumberFormat("de-DE").format(
+            this.price
+          )}  / hari</span>
           <span class="updatedAt mb-4"
             ><i data-feather="clock"></i> Updated at ${moment(
               this.updated_at
             ).format("DD MMM YYYY, hh.mm")}</span
           >
           <div class="d-flex card-action justify-content-between">
-            <a class="btn btn-outline-danger mr-3" data-toggle="modal" href="#modalDelete">
+            <a class="btn btn-outline-danger mr-3" data-toggle="modal" href="#modalDelete${
+              this.id
+            }">
               <i data-feather="trash"></i> Delete</a
             >
             <a class="btn btn-success" href='/car/${
               this.id
             }/edit'><i data-feather="edit"></i> Edit</a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal modal-delete fade"
+        id="modalDelete${this.id}"
+        tabindex="-1"
+        aria-labelledby="modalDeleteLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <img src="/img/modal_img.png" alt="" />
+              <h4>Menghapus Data Mobil</h4>
+              <p>
+                Setelah dihapus, data mobil tidak dapat dikembalikan. Yakin ingin
+                menghapus?
+              </p>
+                <div class="modal-action">
+                  <button onclick="return handleDelete(${this.id})" class="btn btn-primary mr-3">Ya</button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    data-dismiss="modal"
+                  >
+                    Tidak
+                  </button>
+                </div>
+            </div>
           </div>
         </div>
       </div>

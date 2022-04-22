@@ -10,15 +10,18 @@ class CarController {
     const locals = {
       title: "Add New Car",
       layout: "./layouts/dashboard",
+      mode: "create",
     };
     res.render("pages/car/form", locals);
   }
   show(req, res) {
     const locals = {
-      title: 'Update Car Information',
-      layout: './layouts/dashboard'
-    }
-    res.render('pages/car/form', locals)
+      title: "Update Car Information",
+      layout: "./layouts/dashboard",
+      mode: "edit",
+      id: req.params.id,
+    };
+    res.render("pages/car/form", locals);
   }
 }
 

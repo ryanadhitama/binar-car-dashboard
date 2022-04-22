@@ -17,7 +17,6 @@ function loadDataCars() {
         listCar.appendChild(node);
       });
     })
-    .catch(() => {});
 }
 
 function loadDataSize() {
@@ -27,10 +26,18 @@ function loadDataSize() {
       Size.init(result?.data?.data);
       Size.list.forEach((size) => {
         let node = size.render();
-        listSize.insertAdjacentHTML('beforeend', node);
+        listSize.insertAdjacentHTML("beforeend", node);
       });
     })
     .catch(() => {});
+}
+
+function handleDelete(id) {
+  api
+    .delete("/api/cars/"+id)
+    .then((result) => {
+      window.location = "/";
+    })
 }
 
 loadDataCars();

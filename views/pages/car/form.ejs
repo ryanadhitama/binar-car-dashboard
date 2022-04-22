@@ -41,6 +41,17 @@
                   min="0"
                   required
                 />
+                <input
+                  type="hidden"
+                  name="mode"
+                  id="mode"
+                  value="<%- mode %>"
+                />
+                <% if (mode === 'edit') { %>
+                <input type="hidden" name="id" id="id" value="<%- id %>" />
+                <% } else { %>
+                <input type="hidden" name="id" id="id" value="null" />
+                <% } %>
               </div>
             </div>
             <div class="form-group row align-items-center">
@@ -61,14 +72,9 @@
               >
               <div class="col-sm-8">
                 <div class="custom-file">
-                  <input
-                    required
-                    type="file"
-                    class="custom-file-input"
-                    id="attachment"
-                    name="attachment"
-                    accept="image/*"
-                  />
+                  <input <% if (mode === 'create') { %> required <% } %>
+                  type="file" class="custom-file-input" id="attachment"
+                  name="attachment" accept="image/*" />
                   <label
                     class="form-control custom-file-label"
                     for="inputGroupFile04"
@@ -76,6 +82,10 @@
                   >
                   <small>File size max. 2MB</small>
                 </div>
+                <% if (mode === 'edit') { %>
+                <br />
+                <img src="" class="form-img" id="image-preview" alt="" />
+                <% } %>
               </div>
             </div>
           </div>
@@ -84,7 +94,9 @@
     </div>
     <div class="form-action">
       <a href="/car" class="btn btn-outline-primary mr-3">Cancel</a>
-      <button id="btn-submit" type="submit" class="btn btn-primary">Save</button>
+      <button id="btn-submit" type="submit" class="btn btn-primary">
+        Save
+      </button>
     </div>
   </form>
 </div>

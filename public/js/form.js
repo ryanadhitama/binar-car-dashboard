@@ -7,6 +7,8 @@ let name = document.getElementById("name");
 let price = document.getElementById("price");
 let sizeID = document.getElementById("size_id");
 let attachment = document.getElementById("attachment");
+let mode = document.getElementById("mode");
+let id = document.getElementById("id");
 let image = "";
 
 attachment.onchange = function (e) {
@@ -18,16 +20,28 @@ formData.onsubmit = function (e) {
 };
 
 function loadDataSize() {
-  api
-    .get("/api/sizes")
-    .then((result) => {
-      Size.init(result?.data?.data);
-      Size.list.forEach((size) => {
-        let node = size.renderOption();
-        sizeID.insertAdjacentHTML("beforeend", node);
-      });
-    })
-    .catch(() => {});
+  api.get("/api/sizes").then((result) => {
+    Size.init(result?.data?.data);
+    Size.list.forEach((size) => {
+      let node = size.renderOption();
+      sizeID.insertAdjacentHTML("beforeend", node);
+    });
+  });
+}
+
+function loadDataCar() {
+  if (mode.value === "edit") {
+    api.get(`/api/cars/${id.value}`).then((result) => {
+      let res = result.data.data;
+      name.value = res.name;
+      price.value = res.price;
+      sizeID.value = res.size_id;
+      image = res.image;
+      document.getElementById(
+        "image-preview"
+      ).src = "/uploads/car/" + res.image;
+    });
+  }
 }
 
 function handleSubmit() {
@@ -35,12 +49,17 @@ function handleSubmit() {
     name: name.value,
     price: price.value,
     size_id: sizeID.value,
-    image: image
+    image: image,
+  };
+  if (mode.value === "edit") {
+    api.put(`/api/cars/${id.value}`, form).then((res) => {
+      window.location = "/";
+    });
+  } else {
+    api.post("/api/cars", form).then((res) => {
+      window.location = "/";
+    });
   }
-
-  api.post("/api/cars", form).then((res) => {
-    window.location = "/";
-  })
 }
 
 function uploadFile(fileData) {
@@ -54,4 +73,6 @@ function uploadFile(fileData) {
       image = res.data.attachment;
     });
 }
+
 loadDataSize();
+loadDataCar();

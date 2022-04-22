@@ -1,4 +1,5 @@
 const models = require("../../models/index");
+const fs = require("fs");
 const {
   errorResponse,
   successResponse,
@@ -47,7 +48,7 @@ class CarController {
         image,
       });
       if (car) {
-        req.toastr.success('Data Berhasil Disimpan');
+        req.toastr.success("Data Berhasil Disimpan");
         return successResponse(res, "Data Berhasil Disimpan");
       }
     } catch (error) {
@@ -74,6 +75,7 @@ class CarController {
       );
 
       if (car) {
+        req.toastr.success("Data Berhasil Diedit");
         return successResponse(res, "Data Berhasil Diedit");
       }
     } catch (error) {
@@ -83,6 +85,16 @@ class CarController {
   async destroy(req, res) {
     const id = req.params.id;
     try {
+      const data = await models.cars.findOne({
+        where: {
+          id: id,
+        },
+      });
+
+      if (data) {
+        fs.unlinkSync(`public/uploads/car/${data.image}`);
+      }
+
       const car = models.cars.destroy({
         where: {
           id: id,
@@ -90,7 +102,7 @@ class CarController {
       });
 
       if (car) {
-        
+        req.toastr.info("Data Berhasil Dihapus");
         return successResponse(res, "Data Berhasil Dihapus");
       }
     } catch (error) {
