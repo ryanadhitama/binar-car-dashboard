@@ -47,6 +47,7 @@ class CarController {
         image,
       });
       if (car) {
+        req.toastr.success('Data Berhasil Disimpan');
         return successResponse(res, "Data Berhasil Disimpan");
       }
     } catch (error) {
@@ -89,6 +90,7 @@ class CarController {
       });
 
       if (car) {
+        
         return successResponse(res, "Data Berhasil Dihapus");
       }
     } catch (error) {

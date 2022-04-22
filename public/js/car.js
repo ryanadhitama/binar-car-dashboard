@@ -19,7 +19,7 @@ class Car {
     return `
       <div class="card car-card">
         <div class="card-body">
-          <img class="img-fluid w-100 mb-3" src='/uploads/car/${
+          <img class="img-fluid w-100 mb-3 card-img" src='/uploads/car/${
             this.image
           }' alt="Car" />
           <span class="type mb-2">${this.name} </span>
