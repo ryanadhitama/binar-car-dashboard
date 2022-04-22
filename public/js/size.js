@@ -12,7 +12,7 @@ class Size {
 
   render() {
     return `
-      <button class="btn btn-outline-primary btn-filter" value='${this.id}'>
+      <button class="btn btn-outline-primary btn-filter" value='${this.id}' onclick="filterCar(${this.id}, this)">
         ${this.name}
       </button>
         `;

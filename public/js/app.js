@@ -5,18 +5,31 @@ const api = axios.create({
 let listCar = document.getElementById("list-car");
 let listSize = document.getElementById("list-size");
 
+function filterCar(id, e) {
+  document
+    .querySelectorAll(".btn-filter")
+    .forEach((button) => button.classList.remove("active"));
+  e.classList.add("active");
+  listCar.innerHTML = "";
+  api.get("/api/cars?size_id=" + id).then((result) => {
+    generateCar(result?.data?.data);
+  });
+}
+
 function loadDataCars() {
-  api
-    .get("/api/cars")
-    .then((result) => {
-      Car.init(result?.data?.data);
-      Car.list.forEach((car) => {
-        const node = document.createElement("div");
-        node.classList.add("col-md-4");
-        node.innerHTML = car.render();
-        listCar.appendChild(node);
-      });
-    })
+  api.get("/api/cars").then((result) => {
+    generateCar(result?.data?.data);
+  });
+}
+
+function generateCar(data) {
+  Car.init(data);
+  Car.list.forEach((car) => {
+    const node = document.createElement("div");
+    node.classList.add("col-md-4");
+    node.innerHTML = car.render();
+    listCar.appendChild(node);
+  });
 }
 
 function loadDataSize() {
@@ -33,11 +46,9 @@ function loadDataSize() {
 }
 
 function handleDelete(id) {
-  api
-    .delete("/api/cars/"+id)
-    .then((result) => {
-      window.location = "/";
-    })
+  api.delete("/api/cars/" + id).then((result) => {
+    window.location = "/";
+  });
 }
 
 loadDataCars();

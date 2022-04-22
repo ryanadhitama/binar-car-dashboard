@@ -8,14 +8,23 @@ const {
 } = require("../../libs/response");
 class CarController {
   async all(req, res) {
+    const { size_id = null } = req.query;
     try {
-      const cars = await models.cars.findAll({
+      const query = {
         include: [
           {
             model: models.sizes,
           },
         ],
-      });
+      };
+
+      if (size_id !== "null" && size_id) {
+        query.where = {
+          size_id: size_id,
+        };
+      }
+
+      const cars = await models.cars.findAll(query);
       return successFetchResponse(res, cars);
     } catch (error) {
       return errorResponse(res, error);
